@@ -20,8 +20,8 @@ def call_web():
     with urlopen(req) as response:
         jsonResponse = json.load(response)
 
-        print("{:^20s}|{:^16s}|{:^16s}|{:^16s}|".format("Pais","Total Casos","Nuevos Casos","Fallecimientos"))
-        print("{:^20s}|{:^16d}|{:^16d}|{:^16d}|".format(jsonResponse["country"],jsonResponse["cases"],jsonResponse["todayCases"],jsonResponse["deaths"]))
+        print("{:^20s}|{:^16s}|{:^16s}|{:^16s}|{:^16s}|".format("Pais","Total Casos","Nuevos Casos","Recuperados","Fallecimientos"))
+        print("{:^20s}|{:^16d}|{:^16d}|{:^16d}|{:^16d}|".format(jsonResponse["country"],jsonResponse["cases"],jsonResponse["todayCases"],jsonResponse["recovered"],jsonResponse["deaths"]))
 
 clear()
 call_web()
