@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
-import io
 import time
 import json
-from urllib.request import Request, urlopen
+import sys
+from urllib.request import Request, urlopen, HTTPError
 from http.client import HTTPResponse
 from os import system, name 
 
@@ -15,18 +15,30 @@ def clear():
     else: 
         _ = system('clear')
 
-def call_web():
-    req = Request('https://corona.lmao.ninja/countries/Argentina', headers={'User-Agent': 'Mozilla/5.0'})
-    with urlopen(req) as response:
-        jsonResponse = json.load(response)
+def call_web(country):
+    url = f"https://corona.lmao.ninja/countries/{country}"
+    req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    try:
+        with urlopen(req) as response:
+            jsonResponse = json.load(response)
 
-        print("{:^20s}|{:^16s}|{:^16s}|{:^16s}|{:^16s}|".format("Pais","Total Casos","Nuevos Casos","Recuperados","Fallecimientos"))
-        print("{:^20s}|{:^16d}|{:^16d}|{:^16d}|{:^16d}|".format(jsonResponse["country"],jsonResponse["cases"],jsonResponse["todayCases"],jsonResponse["recovered"],jsonResponse["deaths"]))
+            print("{:^20s}|{:^16s}|{:^16s}|{:^16s}|{:^16s}|".format("Country","Confirmed Cases","Today Cases","Recovered","Deaths"))
+            print("{:^20s}|{:^16d}|{:^16d}|{:^16d}|{:^16d}|".format(jsonResponse["country"],jsonResponse["cases"],jsonResponse["todayCases"],jsonResponse["recovered"],jsonResponse["deaths"]))
+    except HTTPError as err:
+        print ("Something went wrong. Please check the Country name you introduced")
+        sys.exit()
 
-clear()
-call_web()
-while True:
-    #Espera larga para no cargar servidor 6 horas
-    time.sleep(21600)
-    clear()
-    call_web()
+if __name__ == "__main__":
+    #defaults to Argentina
+    country = "Argentina"
+    arguments = len(sys.argv) - 1
+    if arguments > 0:
+        country = sys.argv[1]
+
+
+    call_web(country)
+    while True:
+        #long wait 6 hours
+        time.sleep(21600)
+        clear()
+        call_web(country)
