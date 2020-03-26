@@ -27,4 +27,5 @@ Python 3
 Validate the information source:
 * https://github.com/NovelCOVID/API
 * https://www.worldometers.info/coronavirus/
+
 Although it seems pretty accurate, I can't guarantee it's correct
