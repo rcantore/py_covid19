@@ -16,7 +16,7 @@ def clear():
         _ = system('clear')
 
 def call_web(country):
-    url = f"https://corona.lmao.ninja/countries/{country}"
+    url = f"https://corona.lmao.ninja/v2/countries/{country}"
     req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
     try:
         with urlopen(req) as response:
