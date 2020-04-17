@@ -1,7 +1,8 @@
 ## Simple Covid-19 Python tracker
 
 Simple pyhton script that fetches covid-19 stats from the given country every 6 hours.
-A simple table in your terminal is displayed
+A simple table in your terminal is displayed.
+
 This is a work in progress
 
 ### Usage
