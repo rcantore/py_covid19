@@ -8,16 +8,16 @@ This is a work in progress
 ### Usage
 
 Append the country name (in English) you wish to monitor.
-If no name is provided 'Argentina' is used as default
+If no name is provided 'Argentina' is used as default.
 
 Example
 ```
 python3 covidtracker.py Germany
 ```
 
-Please check your python installation
-
 ### Dependencies
+
+Please check your python installation
 
 ```
 Python 3
